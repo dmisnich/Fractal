@@ -60,22 +60,25 @@ int		key_release(int keycode, t_mlx *mlx)
 
 int 	kb1(t_mlx *mlx)
 {
+	int zoom;
+
+	zoom = (int)mlx->v.zoom ? (int)mlx->v.zoom : 1;
 	if (mlx->mouse.plus == 1)
 		mlx->v.zoom *= 1.1;
 	if (mlx->mouse.minus == 1)
 	{
-		if (mlx->v.zoom < 0.25000)
+		if (mlx->v.zoom < 0.100)
 			return (0);
 		mlx->v.zoom *= 0.9;
 	}
 	if (mlx->board.w == 1)
-		mlx->v.moveY += 0.03;
+		mlx->v.moveY += 0.03 / zoom;
 	if (mlx->board.s == 1)
-		mlx->v.moveY -= 0.03;
+		mlx->v.moveY -= 0.03 / zoom;
 	if (mlx->board.a == 1)
-		mlx->v.moveX += 0.03;
+		mlx->v.moveX += 0.03 / zoom;
 	if (mlx->board.d == 1)
-		mlx->v.moveX -= 0.03;
+		mlx->v.moveX -= 0.03 / zoom;
 	if (mlx->board.pl_ret == 1)
 		mlx->z->max_ret += 10;
 	if (mlx->board.min_ret == 1)
@@ -103,3 +106,30 @@ int		move_mouse(int x, int y, t_mlx *mlx)
 	parse_fractol(mlx);
 	return (0);
 }
+
+int		m_zoom(int keycode, int x, int y, t_mlx *mlx)
+{
+	(void)x;
+	(void)y;
+
+	if (keycode == 4)
+		mlx->v.zoom *= 1.1;
+	if (keycode == 5)
+	{
+		if (mlx->v.zoom < 0.100)
+			return (0);
+		mlx->v.zoom *= 0.9;
+	}
+	parse_fractol(mlx);
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+

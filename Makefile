@@ -20,6 +20,11 @@ SRCS =	./src/main.c \
 		./fractols/julia.c \
 		./src/put_pixel.c \
 		./src/keyboard.c \
+		./fractols/buffalo.c \
+		./fractols/mandelbar.c \
+		./fractols/burningship.c \
+		
+
 
 
 OBJ = $(SRCS:.c=.o)

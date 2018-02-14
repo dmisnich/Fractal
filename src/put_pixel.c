@@ -36,7 +36,7 @@ t_complex range_md(int x, int y, t_mlx *mlx)
 {
 	t_complex p;
 
-	p.r = 1.5 * (x - WIN_WIDTH / 2) / (0.6 * mlx->v.zoom * WIN_WIDTH) + mlx->v.moveX;
+	p.r = 1.5 * (x - WIN_WIDTH / 2) / (0.6 * mlx->v.zoom * WIN_WIDTH) + (mlx->v.moveX - 0.5);
 	p.i = (y - WIN_HEIGHT / 2) / (0.5 * mlx->v.zoom * WIN_HEIGHT) + mlx->v.moveY;
 	return (p);
 
@@ -50,5 +50,4 @@ t_complex *range_jul(int x, int y, t_mlx *mlx)
 	p->r = 1.5 * (x - WIN_WIDTH / 2) / (0.6 * mlx->v.zoom * WIN_WIDTH) + mlx->v.moveX;
 	p->i = (y - WIN_HEIGHT / 2) / (0.5 * mlx->v.zoom * WIN_HEIGHT) + mlx->v.moveY;
 	return (p);
-
 }

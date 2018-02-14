@@ -127,6 +127,17 @@ void			init(t_mlx *mlx);
 void			parse_fractol(t_mlx *mlx);
 void			check_arg(char *name, t_mlx *mlx);
 void			draw_mandelbrot_5(t_mlx *mlx);
+void	draw_buffalo(t_mlx *mlx);
+void	help_buffalo(t_mlx *mlx, t_complex *c, t_complex *temp);
+
+void	draw_mandelbar(t_mlx *mlx);
+void	help_mandelbar(t_mlx *mlx, t_complex *c, t_complex *temp);
+
+void		draw_burningship(t_mlx *mlx);
+void	help_burningship(t_mlx *mlx, t_complex *c, t_complex *temp);
+
+int		m_zoom(int keycode, int x, int y, t_mlx *mlx);
+
 void	message(char *msg);
 
 
