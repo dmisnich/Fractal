@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	draw_julia(t_mlx *mlx)
+void			draw_julia(t_mlx *mlx)
 {
 	int			x;
 	int			y;
@@ -37,7 +37,7 @@ void	draw_julia(t_mlx *mlx)
 	}
 }
 
-void	help_julia(t_mlx *mlx, t_complex *temp)
+void			help_julia(t_mlx *mlx, t_complex *temp)
 {
 	mlx->z->max_ret = 500;
 	while (mlx->z->ret < mlx->z->max_ret)

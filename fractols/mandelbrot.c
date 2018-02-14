@@ -12,12 +12,12 @@
 
 #include "fractol.h"
 
-void	draw_mandelbrot(t_mlx *mlx)
+void			draw_mandelbrot(t_mlx *mlx)
 {
-	int x;
-	int y;
-	t_complex c;
-	t_complex temp;
+	int			x;
+	int			y;
+	t_complex	c;
+	t_complex	temp;
 
 	y = -1;
 	while (++y != WIN_HEIGHT)
@@ -35,7 +35,7 @@ void	draw_mandelbrot(t_mlx *mlx)
 	}
 }
 
-void	help_mandelbrot(t_mlx *mlx, t_complex *c, t_complex *temp)
+void			help_mandelbrot(t_mlx *mlx, t_complex *c, t_complex *temp)
 {
 	while (mlx->z->ret < mlx->z->max_ret)
 	{

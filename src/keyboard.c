@@ -58,7 +58,7 @@ int		key_release(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int 	kb1(t_mlx *mlx)
+int		kb1(t_mlx *mlx)
 {
 	int zoom;
 
@@ -72,13 +72,13 @@ int 	kb1(t_mlx *mlx)
 		mlx->v.zoom *= 0.9;
 	}
 	if (mlx->board.w == 1)
-		mlx->v.moveY += 0.03 / zoom;
+		mlx->v.movey += 0.03 / zoom;
 	if (mlx->board.s == 1)
-		mlx->v.moveY -= 0.03 / zoom;
+		mlx->v.movey -= 0.03 / zoom;
 	if (mlx->board.a == 1)
-		mlx->v.moveX += 0.03 / zoom;
+		mlx->v.movex += 0.03 / zoom;
 	if (mlx->board.d == 1)
-		mlx->v.moveX -= 0.03 / zoom;
+		mlx->v.movex -= 0.03 / zoom;
 	if (mlx->board.pl_ret == 1)
 		mlx->z->max_ret += 10;
 	if (mlx->board.min_ret == 1)
@@ -88,20 +88,20 @@ int 	kb1(t_mlx *mlx)
 
 int		move_mouse(int x, int y, t_mlx *mlx)
 {
-	float Tx;
-	float Ty;
+	float tx;
+	float ty;
 
-	Tx = (float)x / 100000;
-	Ty = (float)y / 100000;
+	tx = (float)x / 100000;
+	ty = (float)y / 100000;
 	if (mlx->v.tempx < x)
-		mlx->c.r = mlx->c.r + Tx;
+		mlx->c.r = mlx->c.r + tx;
 	else if (mlx->v.tempx > x)
-		mlx->c.r = mlx->c.r - Tx;
+		mlx->c.r = mlx->c.r - tx;
 	mlx->v.tempx = x;
 	if (mlx->v.tempy < y)
-		mlx->c.i = mlx->c.i + Ty;
+		mlx->c.i = mlx->c.i + ty;
 	else if (mlx->v.tempy > y)
-		mlx->c.i = mlx->c.i - Ty;
+		mlx->c.i = mlx->c.i - ty;
 	mlx->v.tempy = y;
 	parse_fractol(mlx);
 	return (0);
@@ -111,7 +111,6 @@ int		m_zoom(int keycode, int x, int y, t_mlx *mlx)
 {
 	(void)x;
 	(void)y;
-
 	if (keycode == 4)
 		mlx->v.zoom *= 1.1;
 	if (keycode == 5)
@@ -123,13 +122,3 @@ int		m_zoom(int keycode, int x, int y, t_mlx *mlx)
 	parse_fractol(mlx);
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-

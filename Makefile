@@ -20,12 +20,10 @@ SRCS =	./src/main.c \
 		./fractols/julia.c \
 		./src/put_pixel.c \
 		./src/keyboard.c \
+		./src/parse.c \
 		./fractols/buffalo.c \
 		./fractols/mandelbar.c \
 		./fractols/burningship.c \
-		
-
-
 
 OBJ = $(SRCS:.c=.o)
 
@@ -44,11 +42,11 @@ $(NAME): $(OBJ)
 
 clean:
 	make -C $(LFT_DIR) clean
-	rm -f *.o
+	rm -f src/*.o
+	rm -f fractols/*.o
 
 fclean: clean
 	make -C $(LFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all
-

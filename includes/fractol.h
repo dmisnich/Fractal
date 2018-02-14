@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FRACTOL_H
+#ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define WIN_WIDTH 1100
-# define WIN_HEIGHT 900
+# define WIN_WIDTH		1100
+# define WIN_HEIGHT		900
 # define MSG(x) message(x)
 # include <fcntl.h>
 # include <stdlib.h>
@@ -24,7 +24,7 @@
 # include "../libft/libft.h"
 # include <mlx.h>
 
-typedef struct s_kboard
+typedef struct	s_kboard
 {
 	int			w;
 	int			s;
@@ -36,16 +36,16 @@ typedef struct s_kboard
 
 typedef struct	s_v
 {
-	char	*name_n;
+	char		*name_n;
 }				t_v;
 
 typedef struct	s_value
 {
-	float	moveX;
-	float	moveY;
-	float 	zoom;
-	int 	tempx;
-	int 	tempy;
+	float		movex;
+	float		movey;
+	float		zoom;
+	int			tempx;
+	int			tempy;
 }				t_value;
 
 typedef struct	s_mouse
@@ -72,7 +72,7 @@ typedef struct	s_range
 	float		ymin;
 }				t_range;
 
-typedef	struct s_color
+typedef	struct	s_color
 {
 	int			r;
 	int			g;
@@ -104,41 +104,69 @@ typedef struct	s_mlx
 
 }				t_mlx;
 
+/*
+**	MAIN.C
+*/
+
 void			init_mlx(t_mlx *mlx);
-int				exit_x(void);
-void			draw_mandelbrot(t_mlx *mlx);
+void			part_one(t_mlx *mlx);
+void			part_two(t_mlx *mlx);
+void			init(t_mlx *mlx);
+
+/*
+**	PARSE.C
+*/
+
+void			check_arg(char *name, t_mlx *mlx);
+void			parse_fractol(t_mlx *mlx);
+
+/*
+**	PUT_PIXEL.C
+*/
+
 void			img_set_pixel(int x, int y, t_mlx *mlx);
-t_complex		mandelbrot(int x, int y, t_mlx *mlx);
-t_complex		range(int x, int y, t_mlx *mlx);
-void			view(t_mlx *mlx);
+t_complex		*range_jul(int x, int y, t_mlx *mlx);
+t_complex		range_md(int x, int y, t_mlx *mlx);
 t_color			color(t_mlx *mlx);
-void			help_mandelbrot(t_mlx *mlx, t_complex *c, t_complex *temp);
-void			help_mandelbrot_5(t_mlx *mlx, t_complex *c, t_complex *temp);
+
+/*
+**	EXIT.C
+*/
+
+int				exit_x(void);
+
+/*
+**	OTHER.C
+*/
+
+void			message(char *msg);
+
+/*
+**	KEYBOARD.C
+*/
+
+int				m_zoom(int keycode, int x, int y, t_mlx *mlx);
+int				move_mouse(int x, int y, t_mlx *mlx);
 int				key_release(int keycode, t_mlx *mlx);
 int				key_press(int keycode, t_mlx *mlx);
-int 			kb1(t_mlx *mlx);
-t_complex 		range_md(int x, int y, t_mlx *mlx);
-t_complex		 *range_jul(int x, int y, t_mlx *mlx);
+int				kb1(t_mlx *mlx);
+
+/*
+**	FRACTOLES
+*/
+
+void			draw_mandelbrot_5(t_mlx *mlx);
+void			draw_burningship(t_mlx *mlx);
+void			draw_mandelbrot(t_mlx *mlx);
+void			draw_mandelbar(t_mlx *mlx);
+void			draw_buffalo(t_mlx *mlx);
 void			draw_julia(t_mlx *mlx);
+
+void			help_mandelbrot_5(t_mlx *mlx, t_complex *c, t_complex *temp);
+void			help_burningship(t_mlx *mlx, t_complex *c, t_complex *temp);
+void			help_mandelbrot(t_mlx *mlx, t_complex *c, t_complex *temp);
+void			help_mandelbar(t_mlx *mlx, t_complex *c, t_complex *temp);
+void			help_buffalo(t_mlx *mlx, t_complex *c, t_complex *temp);
 void			help_julia(t_mlx *mlx, t_complex *temp);
 
-int				move_mouse(int x, int y, t_mlx *mlx);
-void			init(t_mlx *mlx);
-void			parse_fractol(t_mlx *mlx);
-void			check_arg(char *name, t_mlx *mlx);
-void			draw_mandelbrot_5(t_mlx *mlx);
-void	draw_buffalo(t_mlx *mlx);
-void	help_buffalo(t_mlx *mlx, t_complex *c, t_complex *temp);
-
-void	draw_mandelbar(t_mlx *mlx);
-void	help_mandelbar(t_mlx *mlx, t_complex *c, t_complex *temp);
-
-void		draw_burningship(t_mlx *mlx);
-void	help_burningship(t_mlx *mlx, t_complex *c, t_complex *temp);
-
-int		m_zoom(int keycode, int x, int y, t_mlx *mlx);
-
-void	message(char *msg);
-
-
-# endif
+#endif

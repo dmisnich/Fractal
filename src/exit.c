@@ -17,3 +17,9 @@ int		exit_x(void)
 	system("leaks -quiet fractol");
 	exit(0);
 }
+
+void	message(char *msg)
+{
+	ft_putendl(msg);
+	exit_x();
+}
